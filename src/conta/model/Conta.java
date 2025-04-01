@@ -2,14 +2,14 @@ package conta.model;
 
 import conta.util.Cores;
 
-public class Conta {
-	
+public abstract class Conta {
+
 	private int numero;
 	private int agencia;
 	private int tipo;
 	private String titular;
 	private float saldo;
-	
+
 	public Conta(int numero, int agencia, int tipo, String titular, float saldo) {
 		super();
 		this.numero = numero;
@@ -17,8 +17,7 @@ public class Conta {
 		this.tipo = tipo;
 		this.titular = titular;
 		this.saldo = saldo;
-		
-		
+
 	}
 
 	public int getNumero() {
@@ -60,7 +59,7 @@ public class Conta {
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
-	
+
 	public boolean sacar(float valor) {
 		if (this.getSaldo() < valor) {
 			System.out.println("\n Saldo Insuficiente! ");
@@ -69,12 +68,14 @@ public class Conta {
 		this.setSaldo(this.getSaldo() - valor);
 		return true;
 	}
+
 	public void depositar(float valor) {
 		this.setSaldo(this.getSaldo() + valor);
 	}
+
 	public void visualizar() {
 		String tipo = "";
-		
+
 		switch (this.tipo) {
 		case 1:
 			tipo = "Conta Corrente";
@@ -82,7 +83,7 @@ public class Conta {
 		case 2:
 			tipo = "Conta Poupança";
 			break;
-			
+
 		}
 		System.out.println(Cores.TEXT_RED + "\n\n********************************");
 		System.out.println(Cores.TEXT_WHITE + "Dados da Conta:");
@@ -92,7 +93,7 @@ public class Conta {
 		System.out.println(Cores.TEXT_WHITE + "Tipo da Conta: " + tipo);
 		System.out.println(Cores.TEXT_WHITE + "Titular: " + this.titular);
 		System.out.println(Cores.TEXT_WHITE + "Saldo: " + this.saldo);
-		
+
 	}
-	
+
 }
